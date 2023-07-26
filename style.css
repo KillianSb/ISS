@@ -1,0 +1,38 @@
+#map {
+    height: 800px;
+    width:auto;
+    border-radius: 30px;
+    box-shadow: #fff 1px 0 10px;
+    margin: 3em;
+}
+
+h1, p {
+    display: flex;
+    justify-content: center;
+    color: white;
+    text-shadow: #000 1px 0 10px;
+
+}
+
+html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Pour masquer les barres de défilement */
+    background-image: url(https://animesher.com/orig/1/164/1649/16492/animesher.com_space-love-ceu-1649246.gif);
+    background-size: cover; /* Permet à l'image de couvrir toute la surface de la balise body */
+    background-position: center; /* Centre l'image horizontalement et verticalement */
+    background-repeat: no-repeat; /* Empêche la répétition de l'image */
+}
+
+div#overview {
+    z-index: 10;
+    position: relative;
+}
+
+.particules {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
