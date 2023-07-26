@@ -52,7 +52,7 @@ function affichageMap(json) {
 
 Particles.init({
     selector: '.particules',
-    color: ['#ff0000', '#ffffff', '#666666'],
+    color: ['#0051ff', '#ffffff'],
     maxParticles: 300,
     speed: 0.8,
     connectParticles: true,
