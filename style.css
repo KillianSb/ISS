@@ -18,7 +18,7 @@ html {
     margin: 0;
     padding: 0;
     overflow: hidden; /* Pour masquer les barres de défilement */
-    background-image: url(https://animesher.com/orig/1/164/1649/16492/animesher.com_space-love-ceu-1649246.gif);
+    background-color: black;
     background-size: cover; /* Permet à l'image de couvrir toute la surface de la balise body */
     background-position: center; /* Centre l'image horizontalement et verticalement */
     background-repeat: no-repeat; /* Empêche la répétition de l'image */
