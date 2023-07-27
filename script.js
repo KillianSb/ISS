@@ -64,9 +64,6 @@ function trace() {
 /*        iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location*/
     });
     var markerPoint = L.marker([lat, long],{icon: Point}).addTo(map);
-
-    markerPoint.shadowSize([50, 64]);
-    markerPoint.shadowUrl = 'asset/img/point.png';
 }
 
 Particles.init({
