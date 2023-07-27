@@ -7,7 +7,7 @@ divBlock.appendChild(position);
 
 var map = L.map('map').setView([51.505, -0.09], 13);
 var Icon = L.icon({
-    iconUrl: 'icon.png',
+    iconUrl: 'asset/img/icon.png',
 
     shadowSize:   [50, 64], // size of the shadow
     iconSize:     [90, 105], // taille de l'icone
@@ -40,7 +40,10 @@ function affichageMap(json) {
     lat = json["iss_position"].latitude;
     long = json["iss_position"].longitude;
 
-    map.setView([lat, long], 13)
+/*    //test
+    map.setView([31, 24], 13)*/
+
+    map.setView([lat, long], 13);
     marker.setLatLng([lat, long]);
 /*    console.log([lat + "," + long], 13);*/
     L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}\'', {
@@ -52,8 +55,72 @@ function affichageMap(json) {
 
 Particles.init({
     selector: '.particules',
-    color: ['#ff0000', '#ffffff', '#000000'],
+    color: ['#0051ff', '#ffffff'],
     maxParticles: 300,
     speed: 0.8,
     connectParticles: true,
+});
+
+var easter_egg = new Konami(function() {
+    // Créez un nouvel objet Audio en spécifiant le chemin du fichier audio
+    const sound = new Audio("asset/son/bruit.mp3");
+
+    // Jouez le son
+    sound.play();
+
+    // Particule rouge
+    Particles.init({
+        selector: '.particules',
+        color: ['#ff0000', '#ffffff'],
+        maxParticles: 300,
+        speed: 1,
+        connectParticles: true,
+    });
+
+    // Bordure map rouge
+    const mapDiv = document.getElementById("map");
+    mapDiv.style.boxShadow = "1px 0 10px #ff0000";
+
+    // Bordure texte rouge
+    const divH1 = document.querySelector("h1");
+    divH1.style.textShadow = "1px 0 10px #ff0000";
+    const divP = document.querySelector("p");
+    divP.style.textShadow = "1px 0 10px #ff0000";
+
+    // Equipage
+    const equipage = document.createElement('p');
+    equipage.textContent = "Russes (Sergey Korsakov, Oleg Artemyev et Denis Matveev), " +
+        "NASA (Kjell Lindgren, Robert Hines et Jessica Watkins)," +
+        " Samantha Cristoforetti de l’agence spatiale européenne (ESA)";
+    equipage.style.textShadow = "1px 0 10px #ff0000";
+    divBlock.appendChild(equipage);
+
+    // Position Titanic
+    var Titanic = L.icon({
+        iconUrl: 'asset/img/titanic.png',
+
+        shadowSize:   [50, 64], // size of the shadow
+        iconSize:     [60, 50], // taille de l'icone
+    });
+    var markerTitanic = L.marker([41.7258, -49.9408], {icon: Titanic}).addTo(map).bindPopup("Titanic");
+
+    // Position Bermude
+    var Bermude = L.icon({
+        iconUrl: 'asset/img/triangle.png',
+
+        shadowSize:   [50, 64], // size of the shadow
+        iconSize:     [60, 50], // taille de l'icone
+    });
+    var markerBermude = L.marker([25, -71], {icon: Bermude}).addTo(map).bindPopup("Triangle des bermudes");
+
+/*    // Zone France
+    L.circle([47.09, 2.25], {
+        color: 'red',
+        fillColor: '#f03',
+        fillOpacity: 0.5,
+        radius: 500000
+    }).addTo(map);*/
+
+/*    alert('Konami code was successfully');
+    window.location.href=("https://http.cat/403");*/
 });
