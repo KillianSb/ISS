@@ -43,7 +43,7 @@ function affichageMap(json) {
 /*    //test
     map.setView([31, 24], 13)*/
 
-    map.setView([lat, long], 13);
+    map.setView([lat, long]);
     marker.setLatLng([lat, long]);
 /*    console.log([lat + "," + long], 13);*/
     L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}\'', {
