@@ -51,67 +51,100 @@ function affichageMap(json) {
         minZoom: 2,
         attribution: '©KillianSb'
     }).addTo(map);
+
+    trace();
+}
+
+function trace() {
+   var Point = L.icon({
+        iconUrl: 'asset/img/point.png',
+
+        shadowSize:   [50, 64], // size of the shadow
+        iconSize:     [10, 10], // taille de l'icone
+/*        iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location*/
+    });
+    var markerPoint = L.marker([lat, long],{icon: Point}).addTo(map);
+
+    markerPoint.shadowSize([50, 64]);
+    markerPoint.shadowUrl = 'asset/img/point.png';
 }
 
 Particles.init({
     selector: '.particules',
     color: ['#0051ff', '#ffffff'],
-    maxParticles: 300,
+    maxParticles: 100,
     speed: 0.8,
     connectParticles: true,
 });
 
 var easter_egg = new Konami(function() {
-    // Créez un nouvel objet Audio en spécifiant le chemin du fichier audio
-    const sound = new Audio("asset/son/bruit.mp3");
 
-    // Jouez le son
-    sound.play();
+    playSound();
+    equipage();
+    particles();
+    modifColor();
+    iconPositions();
 
-    // Particule rouge
-    Particles.init({
-        selector: '.particules',
-        color: ['#ff0000', '#ffffff'],
-        maxParticles: 300,
-        speed: 1,
-        connectParticles: true,
-    });
+    function playSound() {
+        // Créez un nouvel objet Audio en spécifiant le chemin du fichier audio
+        const sound = new Audio("asset/son/bruit.mp3");
 
-    // Bordure map rouge
-    const mapDiv = document.getElementById("map");
-    mapDiv.style.boxShadow = "1px 0 10px #ff0000";
+        // Jouez le son
+        sound.play();
+    }
 
-    // Bordure texte rouge
-    const divH1 = document.querySelector("h1");
-    divH1.style.textShadow = "1px 0 10px #ff0000";
-    const divP = document.querySelector("p");
-    divP.style.textShadow = "1px 0 10px #ff0000";
+    function particles() {
+        // Particule rouge
+        Particles.init({
+            selector: '.particules',
+            color: ['#ff0000', '#ffffff'],
+            maxParticles: 300,
+            speed: 1,
+            connectParticles: true,
+        });
+    }
 
-    // Equipage
-    const equipage = document.createElement('p');
-    equipage.textContent = "Russes (Sergey Korsakov, Oleg Artemyev et Denis Matveev), " +
-        "NASA (Kjell Lindgren, Robert Hines et Jessica Watkins)," +
-        " Samantha Cristoforetti de l’agence spatiale européenne (ESA)";
-    equipage.style.textShadow = "1px 0 10px #ff0000";
-    divBlock.appendChild(equipage);
+    function modifColor() {
+        // Bordure map rouge
+        const mapDiv = document.getElementById("map");
+        mapDiv.style.boxShadow = "1px 0 10px #ff0000";
 
-    // Position Titanic
-    var Titanic = L.icon({
-        iconUrl: 'asset/img/titanic.png',
+        // Bordure texte rouge
+        const divH1 = document.querySelector("h1");
+        divH1.style.textShadow = "1px 0 10px #ff0000";
+        const divP = document.querySelector("p");
+        divP.style.textShadow = "1px 0 10px #ff0000";
+    }
 
-        shadowSize:   [50, 64], // size of the shadow
-        iconSize:     [60, 50], // taille de l'icone
-    });
-    var markerTitanic = L.marker([41.7258, -49.9408], {icon: Titanic}).addTo(map).bindPopup("Titanic");
+    function  equipage() {
+        // Equipage
+        const equipage = document.createElement('p');
+        equipage.textContent = "Russes (Sergey Korsakov, Oleg Artemyev et Denis Matveev), " +
+            "NASA (Kjell Lindgren, Robert Hines et Jessica Watkins)," +
+            " Samantha Cristoforetti de l’agence spatiale européenne (ESA)";
+        equipage.style.textShadow = "1px 0 10px #ff0000";
+        divBlock.appendChild(equipage);
+    }
 
-    // Position Bermude
-    var Bermude = L.icon({
-        iconUrl: 'asset/img/triangle.png',
+    function iconPositions () {
+        // Position Titanic
+        var Titanic = L.icon({
+            iconUrl: 'asset/img/titanic.png',
 
-        shadowSize:   [50, 64], // size of the shadow
-        iconSize:     [60, 50], // taille de l'icone
-    });
-    var markerBermude = L.marker([25, -71], {icon: Bermude}).addTo(map).bindPopup("Triangle des bermudes");
+            shadowSize:   [50, 64], // size of the shadow
+            iconSize:     [60, 50], // taille de l'icone
+        });
+        var markerTitanic = L.marker([41.7258, -49.9408], {icon: Titanic}).addTo(map).bindPopup("Titanic");
+
+        // Position Bermude
+        var Bermude = L.icon({
+            iconUrl: 'asset/img/triangle.png',
+
+            shadowSize:   [50, 64], // size of the shadow
+            iconSize:     [60, 50], // taille de l'icone
+        });
+        var markerBermude = L.marker([25, -71], {icon: Bermude}).addTo(map).bindPopup("Triangle des bermudes");
+    }
 
 /*    // Zone France
     L.circle([47.09, 2.25], {
